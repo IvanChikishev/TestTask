@@ -13,15 +13,9 @@ export default {
         updateProducts(state, products) {
             state.products = products
         },
-        updateColums(state, activeColumn) {
-            console.log(activeColumn);
 
-            let column = state.columns.find(c => c.name === activeColumn),
-                columnID = column.id;
-                console.log(state.columns[columnID]);
-            delete state.columns[columnID];
-
-            state.columns.unshift(column);
+        updateColums({columns}, columnId) {
+            columns.splice(0, 0, columns.splice(columnId, 1)[0]);
         }
     },
     state: {
